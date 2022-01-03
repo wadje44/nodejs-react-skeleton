@@ -7,7 +7,7 @@ const swaggerUi = require('swagger-ui-express');
 
 const {
   ValidationError,
-} = require("express-json-validator-middleware");
+} = require('express-json-validator-middleware');
 
 const app = express();
 app.use(cors());
@@ -27,12 +27,13 @@ const errorHandler = require('./exception/ErrorHandler');
 * NODE_ENV is not set, then execution should be treated as local developement
 * For production, production env can be used
 */
-process.env.NODE_ENV ? process.env.NODE_ENV : 'local-development';
-
+process.env.NODE_ENV = process.env.NODE_ENV
+  ? process.env.NODE_ENV : 'local-development';
 
 /*
 * All requests are validated using json schema using middleware
 */
+/* eslint-disable consistent-return */
 function validationErrorMiddleware(error, request, response, next) {
   if (response.headersSent) {
     return next(error);
@@ -49,6 +50,7 @@ function validationErrorMiddleware(error, request, response, next) {
 
   next();
 }
+/* eslint-enable consistent-return */
 
 const options = {
   swaggerDefinition,
@@ -71,7 +73,6 @@ app.get('/swagger.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
-
 
 app.use((req, res) => {
   const response = {

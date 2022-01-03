@@ -49,7 +49,7 @@ const addMessage = async (message) => {
 
   const key = db.key({ namespace, path: [kind] });
   const record = {
-    key: key,
+    key,
     data: {
       message,
       createDatetime: new Date(),
@@ -74,10 +74,10 @@ const getMessages = async (offset, limit) => {
   const messages = await runQuery(query);
 
   // Extract hidden key
-  messages.map(message => {
-    message.id = parseInt(message[db.KEY].id);
+  messages.map((message) => {
+    message.id = parseInt(message[db.KEY].id, 10); // eslint-disable-line no-param-reassign
     return message;
-  })
+  });
 
   return messages;
 };

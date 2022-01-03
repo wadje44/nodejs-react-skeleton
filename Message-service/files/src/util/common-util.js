@@ -2,8 +2,8 @@ module.exports = {
 
   // Check if message is palindrome
   checkIfPalindrome: (message) => {
-    for (let i = 0; i < message.length / 2; i++) {
-      if (message[i] != message[message.length - i - 1]) {
+    for (let i = 0; i < message.length / 2; i += 1) {
+      if (message[i] !== message[message.length - i - 1]) {
         return false;
       }
     }
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   /*
-  * Datastore doesn't support page number 
+  * Datastore doesn't support page number
   * but accepts offset i.e. number of records to be skipped
   * getOffset returns offset using page number and records per page
   */

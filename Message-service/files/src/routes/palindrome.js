@@ -1,5 +1,5 @@
 const express = require('express');
-const { Validator } = require("express-json-validator-middleware");
+const { Validator } = require('express-json-validator-middleware');
 const { StatusCodes } = require('http-status-codes');
 const service = require('../service/palindrome');
 const logger = require('../config/logger');
@@ -9,7 +9,6 @@ const requestByIdSchema = require('../schemas/request/request-by-id.json');
 
 const { validate } = new Validator();
 const router = express.Router();
-
 
 /**
  * @swagger
@@ -26,7 +25,7 @@ const router = express.Router();
  *           description: "Message from user"
  *           schema:
  *                  $ref: "#/definitions/AddMessageRequest"
- * 
+ *
  *       responses:
  *         201:
  *           description: Message save status
@@ -40,7 +39,7 @@ const router = express.Router();
  */
 router.post('/palindrome', validate({ body: addMessageSchema }), async (req, res, next) => {
   try {
-    logger.info("POST add message endpoint is called!");
+    logger.info('POST add message endpoint is called!');
     const result = await service.addMessage(req.body);
     return res.status(StatusCodes.CREATED).send(result);
   } catch (error) {
@@ -79,7 +78,7 @@ router.post('/palindrome', validate({ body: addMessageSchema }), async (req, res
  */
 router.get('/palindrome', validate({ query: getMessagesSchema }), async (req, res, next) => {
   try {
-    logger.info("GET get all messages endpoint is called!");
+    logger.info('GET get all messages endpoint is called!');
     const result = await service.getMessages(req.query);
     res.statusCode = StatusCodes.OK;
     return res.send(result);
@@ -118,7 +117,7 @@ router.get('/palindrome', validate({ query: getMessagesSchema }), async (req, re
  */
 router.get('/palindrome/check/:messageId', validate({ params: requestByIdSchema }), async (req, res, next) => {
   try {
-    logger.info("GET check is palindrome by id endpoint is called!");
+    logger.info('GET check is palindrome by id endpoint is called!');
     logger.info(typeof req.params.messageId);
     const result = await service.checkIfPalindrome(req.params);
     return res.status(StatusCodes.OK).send(result);
@@ -157,7 +156,7 @@ router.get('/palindrome/check/:messageId', validate({ params: requestByIdSchema 
  */
 router.delete('/palindrome/:messageId', validate({ params: requestByIdSchema }), async (req, res, next) => {
   try {
-    logger.info("DELETE by id endpoint is called!");
+    logger.info('DELETE by id endpoint is called!');
     const result = await service.deleteMessage(req.params);
     return res.status(StatusCodes.OK).send(result);
   } catch (error) {

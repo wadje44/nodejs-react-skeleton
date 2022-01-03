@@ -16,7 +16,7 @@
  *     properties:
  *       message:
  *         type: string
- * 
+ *
  *   AddMessageResponse:
  *     type: object
  *     properties:
@@ -24,7 +24,7 @@
  *         type: integer
  *       message:
  *         type: string
- * 
+ *
  *   GetMessagesResponse:
  *     type: object
  *     properties:
@@ -41,19 +41,19 @@
  *                  type: string
  *              createDatetime:
  *                  type: string
- * 
+ *
  *   CheckResponse:
  *      type: "object"
  *      properties:
  *        isPlindrome:
  *           type: boolean
- * 
+ *
  *   DeleteResponse:
  *      type: "object"
  *      properties:
  *        deletedId:
  *           type: integer
- *      
+ *
  *   Error:
  *     type: object
  *     properties:
