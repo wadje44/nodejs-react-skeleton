@@ -15,11 +15,11 @@ const App = () => {
 
   useEffect(() => {
     const getMessages = async () => {
-      const tasksFromServer = await fetchMessages()
-      setMessages(tasksFromServer)
+      const messagesFromServer = await fetchMessages()
+      setMessages(messagesFromServer)
     }
 
-    getMessages().then(r => console.log("fetched"))
+    getMessages().then(r => console.log("Fetched all messages on component load!"))
   }, [])
 
   // Fetch Messages
@@ -34,7 +34,6 @@ const App = () => {
   const fetchMessage = async (id) => {
     const res = await fetch(`${baseUrl}/palindrome/${id}`)
     const data = await res.json()
-
     return data
   }
 
@@ -65,8 +64,7 @@ const App = () => {
   }
 
   const showInfo = async (id) => {
-    debugger
-    alert(JSON.stringify(messages.filter((message) => message.id === id)))
+    alert(messages.filter((message) => message.id === id).message);
   }
 
   return (
@@ -89,7 +87,7 @@ const App = () => {
                     showInfo={showInfo}
                   />
                 ) : (
-                  'No Tasks To Show'
+                  'No Messages To Show'
                 )}
               </>
             }

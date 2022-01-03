@@ -4,6 +4,11 @@ This application is used to post user messages from React frontend. Past message
 
 Message can be checked if it's a a palindrome or not.
 
+
+## Architecture
+
+![alt text](./arc.jpg)
+
 ## To start the Application in root folder execute
 
 
@@ -35,7 +40,7 @@ Message can be checked if it's a a palindrome or not.
     docker-compose logs --follow message-service
     docker-compose logs --follow message-service-dashboard
 
+# Improvements to be done
 
-## Architecture
-
-![alt text](./arc.jpg)
+1. Add message dashboard in Github CI
+2. Continious deployment
