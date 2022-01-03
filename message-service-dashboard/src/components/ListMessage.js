@@ -16,7 +16,6 @@ const Messages = ({ messages, onDelete, showInfo }) => {
             ))}
           </tbody>
         </table>
-
       </div>
   )
 }
