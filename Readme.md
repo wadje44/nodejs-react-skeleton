@@ -2,12 +2,12 @@
 
 This application is used to post user messages from React frontend. Past messages can be listed and deleted from the list.
 
-Message can be checked if it's a a palindrome or not.
+Message can be checked if it's a palindrome or not.
 
 
 ## Architecture
 
-![alt text](./arc.jpg)
+![Architecture diagram](./arc.jpg)
 
 ## To start the Application in root folder execute
 
@@ -19,7 +19,6 @@ Message can be checked if it's a a palindrome or not.
 ### For windows
 
     docker-compose build && docker-compose up -d
-
 
 ## Follow following steps to use application 
 
@@ -39,6 +38,17 @@ Message can be checked if it's a a palindrome or not.
 
     docker-compose logs --follow message-service
     docker-compose logs --follow message-service-dashboard
+
+## To Stop the Application in root folder execute
+
+
+### For Linux
+
+    make down
+
+### For windows
+
+    docker-compose down
 
 # Improvements to be done
 
