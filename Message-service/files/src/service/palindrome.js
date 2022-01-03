@@ -1,5 +1,5 @@
 /*
- * Service layer to make actual business logic and 
+ * Service layer to make actual business logic and
  * call basic operation lib function
  *
 */
@@ -15,9 +15,9 @@ module.exports = {
     const addResponse = await lib.addMessage(reqBody.message);
 
     // Extract and return auto alloted messageId
-    const messageId = parseInt(addResponse[0].mutationResults[0].key.path[0].id);
+    const messageId = parseInt(addResponse[0].mutationResults[0].key.path[0].id, 10);
     logger.info(`Message saved: ${messageId}`);
-    
+
     return {
       id: messageId,
       message: reqBody.message,
@@ -40,7 +40,7 @@ module.exports = {
   },
 
   checkIfPalindrome: async (reqPathParams) => {
-    const messageId = parseInt(reqPathParams.messageId);
+    const messageId = parseInt(reqPathParams.messageId, 10);
     // Fetching the message from database
     const messageDetails = await lib.getMessageById(messageId);
 
@@ -48,7 +48,7 @@ module.exports = {
     if (messageDetails.length === 0) {
       const errorMessage = `Message not found for messageId: ${messageId}`;
       logger.error(errorMessage);
-      throw new NotFoundError(`checkifPalindrome`, errorMessage);
+      throw new NotFoundError('checkifPalindrome', errorMessage);
     }
     const isPalindrome = util.checkIfPalindrome(messageDetails[0].message);
     logger.info(`checkIfPalindrome :${isPalindrome}`);
@@ -56,14 +56,14 @@ module.exports = {
   },
 
   deleteMessage: async (reqPathParams) => {
-    const messageId = parseInt(reqPathParams.messageId);
+    const messageId = parseInt(reqPathParams.messageId, 10);
     const deleteResponse = await lib.deleteMessageById(messageId);
 
     // If message not found, indexes remain unchanged
     if (deleteResponse[0].indexUpdates === 0) {
       const errorMessage = `Message not found for messageId: ${messageId}`;
       logger.error(errorMessage);
-      throw new NotFoundError(`checkifPalindrome`, errorMessage);
+      throw new NotFoundError('checkifPalindrome', errorMessage);
     }
     logger.info(`Deleted message with messageId:${messageId}`);
     return { deletedId: messageId };

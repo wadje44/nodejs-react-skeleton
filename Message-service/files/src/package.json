@@ -9,10 +9,9 @@
     "lint": "eslint -c .eslint.json --no-color .",
     "lint:fix": "eslint -c .eslint.json  --no-color --fix .",
     "unit-test": "mocha ./tests/test.js",
-    "test": "nyc mocha \"tests/**/*.js\" --exit",
+    "test": "nyc mocha \"./tests/**/*.js\" --exit",
     "dev": "env PROJECT_ID=gcp-project DATASTORE_PORT=8081 DATASTORE_HOST=localhost NODE_ENV=local-development DO_DOWNSTREAM_AUTH=false nodemon server.js",
     "dev-windows": "set PROJECT_ID=gcp-project && set DATASTORE_PORT=8081 && set DATASTORE_HOST=localhost && set NODE_ENV=local-development && set DO_DOWNSTREAM_AUTH=false && nodemon server.js"
-
   },
   "author": "",
   "dependencies": {

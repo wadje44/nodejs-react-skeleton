@@ -2,8 +2,6 @@ name: Pull request create
 
 on:
   pull_request:
-    branches: [master]
-    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   build:
@@ -24,4 +22,3 @@ jobs:
         run: cd ./Message-service && make lint
       - name: unit tests
         run: cd ./Message-service && make test
-      - name: Run unit tests
