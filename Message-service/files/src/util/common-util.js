@@ -2,7 +2,7 @@ module.exports = {
 
   // Check if message is palindrome
   checkIfPalindrome: (message) => {
-    const trimmedMessage = message.replace(/ /g,'');
+    const trimmedMessage = message.replace(/ /g, '');
     for (let i = 0; i < trimmedMessage.length / 2; i += 1) {
       if (trimmedMessage[i] !== trimmedMessage[trimmedMessage.length - i - 1]) {
         return false;
