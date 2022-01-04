@@ -63,8 +63,27 @@ const App = () => {
       : alert('Error Deleting This Message')
   }
 
-  const showInfo = async (id) => {
-    alert(messages.filter((message) => message.id === id).message);
+  // Check if Palindrome Message
+  const checkIfPalindrome = async (id) => {
+    const res = await fetch(`${baseUrl}/palindrome/check/${id}`, {
+      method: 'GET',
+    });
+    
+    if(res.status === 200) {
+      return (await res.json()).isPalindrome;
+    } else {
+      alert('Error fetching palindrome status!');
+    }
+  }
+
+  const showIfPalindrome = async (id) => {
+    const checkMessage = messages.filter((message) => message.id === id)[0];
+    const isPalindrome = await checkIfPalindrome(checkMessage.id);
+    if(isPalindrome) {
+      alert(`${checkMessage.message} is Palindrome`);
+    } else {
+      alert(`${checkMessage.message} is not Palindrome`);
+    }
   }
 
   return (
@@ -84,7 +103,7 @@ const App = () => {
                   <Messages
                     messages={messages}
                     onDelete={deleteMessage}
-                    showInfo={showInfo}
+                    showInfo={showIfPalindrome}
                   />
                 ) : (
                   'No Messages To Show'
