@@ -8,12 +8,7 @@ build:
 run:
 	docker run --rm \
 		${DOCKER_IMAGE} dev
-
-.PHONY: run-windows
-run-widows:
-	docker run --rm \
-		${DOCKER_IMAGE} dev-windows
-
+		
 .PHONY: lint
 lint: build
 	docker run --rm \
