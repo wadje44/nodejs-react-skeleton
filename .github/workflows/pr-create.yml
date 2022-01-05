@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Build
+        run: cd ./Message-service && make build
       - name: Code lint
         run: cd ./Message-service && make lint
       - name: Unit tests

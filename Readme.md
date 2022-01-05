@@ -14,6 +14,7 @@ Message can be checked if it's a palindrome or not.
 
 ### For Linux
 
+    make build
     make up
 
 ### For windows

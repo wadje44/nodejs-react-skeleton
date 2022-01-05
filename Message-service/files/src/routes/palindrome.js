@@ -135,7 +135,7 @@ router.get('/palindrome/check/:messageId', validate({ params: requestByIdSchema 
  *       produces: [application/json]
  *       parameters:
  *         - in: "path"
- *           name: "id"
+ *           name: "messageId"
  *           type: integer
  *           required: true
  *           description: "Unique identifier for a message"
